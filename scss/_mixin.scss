@@ -1,0 +1,64 @@
+@mixin clear {
+	&:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+@mixin box-center($w, $h, $x, $y) {
+	width: $w;
+	height: $h;
+	font-size: 20px;
+	line-height: $h;
+
+	text-align: center;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate($x, $y);
+}
+
+@mixin box($width: 200px, $height: 200px, $bdw: 1px, $bdc: #333) {
+	width: $width;
+	height: $height;
+	border: $bdw solid $bdc;
+}
+
+// 기본 버튼 믹스인
+@mixin btn($w, $h, $fz, $bg) {
+	display: inline-block;
+	width: $w;
+	height: $h;
+	line-height: $h;
+	font-size: $fz;
+	text-align: center;
+	color: $c;
+	text-decoration: none;
+	background-color: $bg;
+	font-weight: 700;
+}
+
+// 둥근 버튼 믹스인
+@mixin btn-radious($w, $h, $fz, $radious, $bg) {
+	display: inline-block;
+	color: #333;
+	text-decoration: none;
+	width: $w;
+	height: $h;
+	line-height: $h;
+	font-weight: 400;
+	font-size: $fz;
+	text-align: center;
+	background-color: $bg;
+	border-radius: $radious;
+}
+
+// 컨테이너 정렬 믹스인
+
+@mixin container-box($w, $h, $p) {
+	width: $w;
+	height: $h;
+	margin: 0 auto;
+	padding: $p 0;
+}
