@@ -2,10 +2,10 @@
 	<div class="intro">
 		<div>
 			<h1 id="scene">
-				<span data-depth="1.5">w</span>
-				<span data-depth="2.8">a</span>
-				<span data-depth="3.5">j</span>
-				<span data-depth="4.3">o</span>
+				<span data-depth="1.5" class="pword1">w</span>
+				<span data-depth="2.8" class="pword2">a</span>
+				<span data-depth="3.5" class="pword3">j</span>
+				<span data-depth="4.3" class="pword4">o</span>
 			</h1>
 		</div>
 
@@ -32,6 +32,7 @@ export default {
 	},
 	mounted() {
 		this.logoParallax();
+		this.touchParallex();
 		this.barLoading();
 	},
 	methods: {
@@ -50,8 +51,48 @@ export default {
 			}, 40);
 		},
 		logoParallax() {
-			var scene = document.getElementById('scene');
-			var parallaxInstance = new Parallax(scene);
+			var docWidth = window.innerWidth;
+			if (docWidth > 480) {
+				var scene = document.getElementById('scene');
+				var parallaxInstance = new Parallax(scene);
+			}
+		},
+		touchParallex() {
+			var docWidth2 = window.innerWidth;
+			if (docWidth2 <= 480) {
+				let word1 = document.querySelector('.pword1');
+				let word2 = document.querySelector('.pword2');
+				let word3 = document.querySelector('.pword3');
+				let word4 = document.querySelector('.pword4');
+				let xLine = 0,
+					yLine = 0;
+				let tx = 0,
+					ty = 0;
+				const speed = 1;
+				const loop = () => {
+					tx += (xLine - tx) * speed;
+					ty += (yLine - ty) * speed;
+					window.requestAnimationFrame(loop);
+				};
+
+				loop();
+				const touchFunc = (e) => {
+					var touchX =
+						(e.changedTouches && e.changedTouches[0].clientX) || e.clientX;
+					var touchY =
+						(e.changedTouches && e.changedTouches[0].clientY) || e.clientY;
+					(xLine = touchX - window.innerWidth / 2),
+						(yLine = touchY - window.innerHeight / 2);
+					word1.style.transform = `translate(${tx / 30}px, ${ty / 30}px)`;
+					word2.style.transform = `translate(${tx / 25}px, ${ty / 25}px)`;
+					word3.style.transform = `translate(${tx / 20}px, ${ty / 20}px)`;
+					word4.style.transform = `translate(${tx / 15}px, ${ty / 15}px)`;
+				};
+				window.addEventListener('touchstart', touchFunc);
+				window.addEventListener('touchmove', touchFunc);
+				window.addEventListener('touchleave', touchFunc);
+				window.addEventListener('touchend', touchFunc);
+			}
 		},
 	},
 };
