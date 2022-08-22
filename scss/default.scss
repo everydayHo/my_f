@@ -272,3 +272,7 @@ span.bad {
 		display: none;
 	}
 }
+
+.footer ul li a.router-link-active {
+	color: $secondary !important;
+}

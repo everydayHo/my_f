@@ -169,7 +169,7 @@ export default {
 @import '../../scss/variable';
 .home {
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	.swiper {
 		width: 100%;
 		height: 100%;

@@ -2,7 +2,9 @@
 	<div class="footer">
 		<ul>
 			<li>
-				<router-link to="/home"><i class="xi-home"></i>HOME</router-link>
+				<router-link to="/home" class="active"
+					><i class="xi-home"></i>HOME</router-link
+				>
 			</li>
 			<li>
 				<router-link to="/about"><i class="xi-user"></i>ABOUT</router-link>
@@ -67,7 +69,8 @@ export default {
 					font-size: 2.8rem;
 				}
 				&:hover {
-					color: $secondary;
+					transform: scale(1.2);
+					color: $color6;
 				}
 			}
 		}
